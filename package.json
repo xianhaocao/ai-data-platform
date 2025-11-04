@@ -1,0 +1,29 @@
+{
+  "name": "ai-data-platform",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server.js",
+    "start": "concurrently \"npm run dev\" \"npm run server\""
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "d3": "^7.8.5",
+    "express": "^4.18.2",
+    "pinia": "^2.1.6",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "vue": "^3.3.4",
+    "vue-grid-layout": "^3.0.0-beta1",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.0",
+    "concurrently": "^8.2.2",
+    "vite": "^5.0.0"
+  }
+}
