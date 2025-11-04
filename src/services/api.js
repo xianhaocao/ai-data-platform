@@ -222,3 +222,14 @@ export async function fetchMockData(widgetType) {
   
   return types[widgetType] || {}
 }
+
+// 获取数据（通用函数，根据URL调用对应的API）
+export async function fetchData(url) {
+  try {
+    // 使用apiClient调用指定的URL
+    return await apiClient.get(url)
+  } catch (error) {
+    console.error(`从 ${url} 获取数据失败:`, error)
+    throw error
+  }
+}

@@ -153,7 +153,7 @@ onUnmounted(() => {
   border-bottom: 1px solid #e5e7eb;
 }
 
-// 条纹样式
+/* 条纹样式 */
 .table-striped .table-row:nth-child(even) {
   background-color: #f9fafb;
 }
@@ -162,7 +162,7 @@ onUnmounted(() => {
   background-color: #f3f4f6;
 }
 
-// 边框样式
+/* 边框样式 */
 .table-bordered {
   border: 1px solid #e5e7eb;
 }
@@ -180,7 +180,7 @@ onUnmounted(() => {
   border-right: none;
 }
 
-// 空数据提示
+/* 空数据提示 */
 .empty-row .empty-cell {
   text-align: center;
   padding: 2rem;
@@ -197,7 +197,7 @@ onUnmounted(() => {
   font-size: 14px;
 }
 
-// 滚动条样式
+/* 滚动条样式 */
 .table-wrapper::-webkit-scrollbar {
   width: 8px;
   height: 8px;
