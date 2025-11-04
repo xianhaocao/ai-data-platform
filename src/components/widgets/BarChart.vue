@@ -9,6 +9,13 @@
 <script setup>
 import { ref, onMounted, watch, onUnmounted } from 'vue'
 import * as d3 from 'd3'
+import { useFilterStore } from '@/stores/filter'
+
+// 注册过滤 store
+const $filterStore = useFilterStore()
+
+// 定义 emit
+const emit = defineEmits(['filter'])
 
 const props = defineProps({
   widgetId: {
@@ -162,6 +169,15 @@ const renderChart = () => {
           .attr('opacity', 1)
 
         d3.selectAll('.d3-tooltip').remove()
+      })
+      .on('click', function(event, d) {
+        // 触发过滤事件
+        emit('filter', {
+          field: dataset.label,
+          operator: 'equal',
+          value: d.value,
+          chartId: props.widgetId
+        })
       })
 
     // 添加数据标签

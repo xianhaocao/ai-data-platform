@@ -1,5 +1,5 @@
 <template>
-  <div class="table-container">
+  <div class="table-container" ref="tableContainer">
     <div class="table-wrapper">
       <table
         class="data-table"
@@ -28,6 +28,7 @@
               v-for="(cell, cellIndex) in row"
               :key="cellIndex"
               class="table-cell"
+              @click="handleCellClick(cellIndex, cell)"
             >
               {{ cell }}
             </td>
@@ -51,6 +52,7 @@
 
 <script setup>
 import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { useFilterStore } from '@/stores/filter'
 
 const props = defineProps({
   widgetId: {
@@ -74,6 +76,9 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['filter'])
+const $filterStore = useFilterStore()
+
 const tableContainer = ref(null)
 let containerWidth = 0
 
@@ -87,6 +92,17 @@ const handleResize = () => {
       // 可以在这里添加表格列宽的自适应逻辑
     }
   }
+}
+
+// 处理单元格点击事件
+const handleCellClick = (cellIndex, cellValue) => {
+  // 触发过滤事件
+  emit('filter', {
+    field: props.data.columns[cellIndex],
+    operator: 'equal',
+    value: cellValue,
+    chartId: props.widgetId
+  })
 }
 
 onMounted(() => {

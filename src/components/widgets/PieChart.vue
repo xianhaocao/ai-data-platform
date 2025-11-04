@@ -9,6 +9,7 @@
 <script setup>
 import { ref, onMounted, watch, onUnmounted } from 'vue'
 import * as d3 from 'd3'
+import { useFilterStore } from '@/stores/filter'
 
 const props = defineProps({
   widgetId: {
@@ -27,6 +28,9 @@ const props = defineProps({
     })
   }
 })
+
+const emit = defineEmits(['filter'])
+const $filterStore = useFilterStore()
 
 const chartSvg = ref(null)
 let containerWidth = 0
@@ -147,6 +151,15 @@ const renderChart = () => {
         .attr('transform', 'scale(1)')
 
       d3.selectAll('.d3-tooltip').remove()
+    })
+    .on('click', function(event, d) {
+      // 触发过滤事件
+      emit('filter', {
+        field: props.data.labels[d.index],
+        operator: 'equal',
+        value: d.value,
+        chartId: props.widgetId
+      })
     })
 
   // 添加图例

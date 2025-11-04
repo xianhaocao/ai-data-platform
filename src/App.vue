@@ -48,6 +48,11 @@
 
     <!-- 主内容区域 -->
     <main class="dashboard-main">
+      <!-- 过滤面板和AI推荐面板 -->
+      <div class="dashboard-panels">
+        <FilterPanel />
+        <AIRecommendationPanel />
+      </div>
       <!-- 拖拽布局 -->
       <grid-layout
         :layout="dashboard.layout"
@@ -187,9 +192,15 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useDashboardStore } from '@/stores/dashboard'
+import { useFilterStore } from '@/stores/filter'
+import { useAIRecommendationStore } from '@/stores/aiRecommendation'
 import { widgetComponents } from '@/components/widgets/index'
+import FilterPanel from '@/components/FilterPanel.vue'
+import AIRecommendationPanel from '@/components/AIRecommendationPanel.vue'
 
 const dashboardStore = useDashboardStore()
+const filterStore = useFilterStore()
+const aiRecommendationStore = useAIRecommendationStore()
 const dashboard = computed(() => dashboardStore.dashboard)
 
 const showConfigPanel = ref(false)
@@ -321,6 +332,16 @@ initDashboard()
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+}
+
+.dashboard-panels {
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
 .header-left .app-title {
