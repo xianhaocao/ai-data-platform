@@ -262,6 +262,47 @@ export const useDashboardStore = defineStore('dashboard', {
               ['赵六', 35, '架构师', '技术部']
             ]
           }
+        case 'relation-graph':
+          return {
+            nodes: [
+              { id: 'node1', label: '节点1', type: 'type1', color: '#3b82f6' },
+              { id: 'node2', label: '节点2', type: 'type2', color: '#10b981' },
+              { id: 'node3', label: '节点3', type: 'type1', color: '#3b82f6' },
+              { id: 'node4', label: '节点4', type: 'type3', color: '#f59e0b' },
+              { id: 'node5', label: '节点5', type: 'type2', color: '#10b981' },
+              { id: 'node6', label: '节点6', type: 'type1', color: '#3b82f6' },
+              { id: 'node7', label: '节点7', type: 'type3', color: '#f59e0b' },
+              { id: 'node8', label: '节点8', type: 'type2', color: '#10b981' },
+              { id: 'node9', label: '节点9', type: 'type1', color: '#3b82f6' },
+              { id: 'node10', label: '节点10', type: 'type3', color: '#f59e0b' }
+            ],
+            links: [
+              { id: 'link1', source: 'node1', target: 'node2', relation: '依赖' },
+              { id: 'link2', source: 'node1', target: 'node3', relation: '依赖' },
+              { id: 'link3', source: 'node2', target: 'node4', relation: '依赖' },
+              { id: 'link4', source: 'node3', target: 'node4', relation: '依赖' },
+              { id: 'link5', source: 'node4', target: 'node5', relation: '依赖' },
+              { id: 'link6', source: 'node5', target: 'node6', relation: '依赖' },
+              { id: 'link7', source: 'node5', target: 'node7', relation: '依赖' },
+              { id: 'link8', source: 'node6', target: 'node8', relation: '依赖' },
+              { id: 'link9', source: 'node7', target: 'node8', relation: '依赖' },
+              { id: 'link10', source: 'node8', target: 'node9', relation: '依赖' },
+              { id: 'link11', source: 'node8', target: 'node10', relation: '依赖' }
+            ]
+          }
+        case 'virtual-scroll-chart':
+          // 生成10w+行测试数据
+          const rows = [];
+          for (let i = 0; i < 100000; i++) {
+            rows.push({
+              id: i + 1,
+              timestamp: new Date(Date.now() - i * 60000).toISOString(),
+              value1: Math.random() * 1000,
+              value2: Math.random() * 500,
+              value3: Math.random() * 2000
+            });
+          }
+          return rows;
         default:
           return {}
       }

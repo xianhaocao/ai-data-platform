@@ -3,6 +3,8 @@ import BarChart from './BarChart.vue'
 import PieChart from './PieChart.vue'
 import GaugeChart from './GaugeChart.vue'
 import DataTable from './DataTable.vue'
+import RelationGraph from './RelationGraph.vue'
+import VirtualScrollChart from './VirtualScrollChart.vue'
 
 // 组件映射表
 export const widgetComponents = {
@@ -10,7 +12,9 @@ export const widgetComponents = {
   'bar-chart': BarChart,
   'pie-chart': PieChart,
   'gauge-chart': GaugeChart,
-  'table': DataTable
+  'table': DataTable,
+  'relation-graph': RelationGraph,
+  'virtual-scroll-chart': VirtualScrollChart
 }
 
 // 组件类型列表
@@ -19,7 +23,9 @@ export const widgetTypes = [
   { value: 'bar-chart', label: '柱状图', icon: '📊' },
   { value: 'pie-chart', label: '饼图', icon: '🥧' },
   { value: 'gauge-chart', label: '仪表盘', icon: '⏱️' },
-  { value: 'table', label: '表格', icon: '📋' }
+  { value: 'table', label: '表格', icon: '📋' },
+  { value: 'relation-graph', label: '关系图', icon: '🔗' },
+  { value: 'virtual-scroll-chart', label: '虚拟滚动图表', icon: '📜' }
 ]
 
 // 注册所有组件到Vue应用
